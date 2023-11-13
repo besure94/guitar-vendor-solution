@@ -31,7 +31,7 @@ namespace GuitarVendor.Controllers
     [HttpPost]
     public ActionResult Create(Guitar guitar)
     {
-      if (guitar.StoreId == 0 || guitar.Brand == null || guitar.Model == null || guitar.Color == null || guitar.Type == null || guitar.Price == null)
+      if (guitar.StoreId == 0 || guitar.Brand == null || guitar.Model == null || guitar.Color == null || guitar.Type == null || guitar.Price == 0)
       {
         return RedirectToAction ("Create");
       }
@@ -41,6 +41,12 @@ namespace GuitarVendor.Controllers
         _db.SaveChanges();
         return RedirectToAction("Index");
       }
+    }
+
+    public ActionResult Details(int id)
+    {
+      Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
+      return View(thisGuitar);
     }
 
   }

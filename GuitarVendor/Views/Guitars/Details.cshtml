@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@using GuitarVendor.Models
+@model GuitarVendor.Models.Guitar
+
+<h2>Guitar Details</h2>
+<hr>
+<h3>@Html.DisplayNameFor(model => model.Brand): @Html.DisplayFor(model => model.Brand)</h3>
+<h3>@Html.DisplayNameFor(model => model.Model): @Html.DisplayFor(model => model.Model)</h3>
+<h3>@Html.DisplayNameFor(model => model.Color): @Html.DisplayFor(model => model.Color)</h3>
+<h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
+<h3>@Html.DisplayNameFor(model => model.Price): $@Html.DisplayFor(model => model.Price)</h3>
+<h3>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</h3>
+<h3>@Html.DisplayNameFor(model => model.Store): @Html.DisplayFor(model => model.Store.Name)</h3>
+
+<p>@Html.ActionLink("Back to guitar list", "Index")</p>
