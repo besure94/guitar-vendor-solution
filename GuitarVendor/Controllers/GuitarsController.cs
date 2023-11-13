@@ -22,5 +22,26 @@ namespace GuitarVendor.Controllers
       return View(model);
     }
 
+    public ActionResult Create()
+    {
+      ViewBag.StoreId = new SelectList(_db.Stores, "StoreId", "Name");
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Guitar guitar)
+    {
+      if (guitar.StoreId == 0 || guitar.Brand == null || guitar.Model == null || guitar.Color == null || guitar.Type == null || guitar.Price == null)
+      {
+        return RedirectToAction ("Create");
+      }
+      else
+      {
+        _db.Guitars.Add(guitar);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+    }
+
   }
 }

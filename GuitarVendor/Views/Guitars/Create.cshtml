@@ -1,0 +1,42 @@
+@{
+  Layout = "_Layout";
+}
+
+@model GuitarVendor.Models.Guitar
+@using GuitarVendor.Models
+
+<p><strong>Note:</strong>You need to have at least one store before you can add a guitar.</p>
+<p>Go to @Html.ActionLink("this page", "Create", "Stores") to add a store.</p>
+
+<h4>Add a new guitar</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Brand)
+  @Html.TextBoxFor(model => model.Brand)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Model)
+  @Html.TextBoxFor(model => model.Model)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Color)
+  @Html.TextBoxFor(model => model.Color)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Type)
+  @Html.TextBoxFor(model => model.Type)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Price)
+  @Html.TextBoxFor(model => model.Price, new {type="number"})
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Store)
+  @Html.DropDownList("StoreId")
+  <br>
+  <br>
+  <input type="submit" value="Add new guitar" class="btn btn-primary"/>
+}
+<br>
+<p>@Html.ActionLink("Back to guitar list", "Index")</p>
+<p>@Html.ActionLink("View store list", "Index", "Stores")</p>
