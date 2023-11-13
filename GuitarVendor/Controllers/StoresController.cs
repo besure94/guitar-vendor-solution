@@ -21,5 +21,24 @@ namespace GuitarVendor.Controllers
       List<Store> model = _db.Stores.ToList();
       return View(model);
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Store store)
+    {
+      _db.Stores.Add(store);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      Store thisStore = _db.Stores.FirstOrDefault(store => store.StoreId == id);
+      return View(thisStore);
+    }
   }
 }
