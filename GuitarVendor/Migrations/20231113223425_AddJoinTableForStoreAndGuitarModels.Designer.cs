@@ -2,6 +2,7 @@
 using GuitarVendor.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuitarVendor.Migrations
 {
     [DbContext(typeof(GuitarVendorContext))]
-    partial class GuitarVendorContextModelSnapshot : ModelSnapshot
+    [Migration("20231113223425_AddJoinTableForStoreAndGuitarModels")]
+    partial class AddJoinTableForStoreAndGuitarModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

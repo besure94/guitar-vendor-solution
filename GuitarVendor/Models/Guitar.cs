@@ -14,6 +14,7 @@ namespace GuitarVendor.Models
     public int Price { get; set; }
     public int Year { get; set; }
     public Store Store { get; set; }
+    public List<StoreGuitar> JoinEntities { get; }
 
   }
 }
