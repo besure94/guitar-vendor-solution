@@ -18,7 +18,7 @@ namespace GuitarVendor.Controllers
 
     public ActionResult Index()
     {
-      List<Guitar> model = _db.Guitars.ToList();
+      List<Guitar> model = _db.Guitars.Include(guitar => guitar.Store).ToList();
       return View(model);
     }
 

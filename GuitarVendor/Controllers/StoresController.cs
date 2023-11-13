@@ -37,7 +37,7 @@ namespace GuitarVendor.Controllers
 
     public ActionResult Details(int id)
     {
-      Store thisStore = _db.Stores.FirstOrDefault(store => store.StoreId == id);
+      Store thisStore = _db.Stores.Include(store => store.Guitars).FirstOrDefault(store => store.StoreId == id);
       return View(thisStore);
     }
   }

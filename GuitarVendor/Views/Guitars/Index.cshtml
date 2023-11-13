@@ -16,7 +16,7 @@ else
   <ul>
     @foreach (Guitar guitar in Model)
     {
-      <li>@Html.ActionLink($"{guitar.Year}_{guitar.Brand}_{guitar.Model}", "Details", new { id = guitar.GuitarId })</li>
+      <li>@Html.ActionLink($"{guitar.Year}_{guitar.Brand}_{guitar.Model}", "Details", new { id = guitar.GuitarId }) | @guitar.Store.Name</li>
     }
   </ul>
 }

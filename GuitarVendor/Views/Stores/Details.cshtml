@@ -11,4 +11,19 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
 
+@if (@Model.Guitars.Count == 0)
+{
+  <h3>No guitars have been added to this store yet.</h3>
+}
+else
+{
+  <h3>Guitars:</h3>
+  <ul>
+    @foreach (Guitar guitar in Model.Guitars)
+    {
+      <li>@Html.ActionLink($"{guitar.Year}_{guitar.Brand}_{guitar.Model}", "Details", "Guitars", new { id = guitar.GuitarId })</li>
+    }
+  </ul>
+}
+
 <p>@Html.ActionLink("Back to store list", "Index")</p>
