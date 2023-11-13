@@ -31,6 +31,10 @@
   @Html.TextBoxFor(model => model.Price, new {type="number"})
   <br>
   <br>
+  @Html.LabelFor(model => model.Year)
+  @Html.TextBoxFor(model => model.Year, new {type="number"})
+  <br>
+  <br>
   @Html.LabelFor(model => model.Store)
   @Html.DropDownList("StoreId")
   <br>

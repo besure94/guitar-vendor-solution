@@ -12,6 +12,7 @@ namespace GuitarVendor.Models
     public string Color { get; set; }
     public string Type { get; set; }
     public int Price { get; set; }
+    public int Year { get; set; }
     public Store Store { get; set; }
 
   }
