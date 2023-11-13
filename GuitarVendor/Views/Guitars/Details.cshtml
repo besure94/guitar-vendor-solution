@@ -13,6 +13,21 @@
 <h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
 <h3>@Html.DisplayNameFor(model => model.Price): $@Html.DisplayFor(model => model.Price)</h3>
 <h3>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</h3>
-@* <h3>@Html.DisplayNameFor(model => model.Store): @Html.DisplayFor(model => model.Store.Name)</h3> *@
 
+@if (@Model.JoinEntities.Count == 0)
+{
+  <h4>This guitar is not sold at any stores yet.</h4>
+}
+else
+{
+  <h4>This guitar is sold at the following stores:</h4>
+  <ul>
+    @foreach(StoreGuitar join in Model.JoinEntities)
+    {
+      <li>@join.Store.Name</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add a store to this guitar", "AddStore", new { id = Model.GuitarId })</p>
 <p>@Html.ActionLink("Back to guitar list", "Index")</p>

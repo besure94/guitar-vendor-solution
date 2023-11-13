@@ -45,8 +45,31 @@ namespace GuitarVendor.Controllers
 
     public ActionResult Details(int id)
     {
-      Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
+      Guitar thisGuitar = _db.Guitars
+      .Include(guitar => guitar.JoinEntities)
+      .ThenInclude(guitar => guitar.Store)
+      .FirstOrDefault(guitar => guitar.GuitarId == id);
       return View(thisGuitar);
+    }
+
+    public ActionResult AddStore(int id)
+    {
+      Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitars => guitars.GuitarId == id);
+      ViewBag.StoreId = new SelectList(_db.Stores, "StoreId", "Name");
+      return View(thisGuitar);
+    }
+
+    [HttpPost]
+    public ActionResult AddStore(Guitar guitar, int storeId)
+    {
+      #nullable enable
+      StoreGuitar? joinEntity = _db.StoreGuitars.FirstOrDefault(join => (join.StoreGuitarId == storeId && join.GuitarId == guitar.GuitarId));
+      if (joinEntity == null && storeId != 0)
+      {
+        _db.StoreGuitars.Add(new StoreGuitar() { StoreId = storeId, GuitarId = guitar.GuitarId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = guitar.GuitarId });
     }
 
   }
