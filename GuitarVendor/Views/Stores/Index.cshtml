@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using GuitarVendor.Models;
+
+<h1>Stores</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No stores have been added yet.</h3>
+}
+
+<ul>
+  @foreach (Store store in Model)
+  {
+    <li>@Html.ActionLink($"{store.Name}", "Details", new { id = store.StoreId })</li>
+  }
+</ul>
+
+<p>@Html.ActionLink("Add new store", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
