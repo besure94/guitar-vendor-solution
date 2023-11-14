@@ -28,11 +28,11 @@
   <br>
   <br>
   @Html.LabelFor(model => model.Price)
-  @Html.TextBoxFor(model => model.Price, new {type="number"})
+  @Html.TextBoxFor(model => model.Price, new {type="number", min="0"})
   <br>
   <br>
   @Html.LabelFor(model => model.Year)
-  @Html.TextBoxFor(model => model.Year, new {type="number"})
+  @Html.TextBoxFor(model => model.Year, new {type="number", min="1931", max="2023"})
   <br>
   <br>
   @Html.LabelFor(model => model.Store)
