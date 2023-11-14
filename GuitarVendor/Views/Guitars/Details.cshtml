@@ -25,10 +25,17 @@ else
     @foreach(StoreGuitar join in Model.JoinEntities)
     {
       <li>@join.Store.Name</li>
+      // create delete join entity functionality for guitars and stores
+      @using (Html.BeginForm("DeleteJoin", "Guitars"))
+      {
+        @Html.Hidden("joinId", @join.StoreGuitarId)
+        <input type="submit" value="Delete"/>
+      }
     }
   </ul>
 }
 
 <p>@Html.ActionLink("Add a store to this guitar", "AddStore", new { id = Model.GuitarId })</p>
+<p>@Html.ActionLink("Delete this guitar", "Delete", new { id = Model.GuitarId })</p>
 <p>@Html.ActionLink("Back to guitar list", "Index")</p>
 <p>@Html.ActionLink("View store list", "Index", "Stores")</p>

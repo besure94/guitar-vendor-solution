@@ -66,12 +66,28 @@ namespace GuitarVendor.Controllers
     {
       #nullable enable
       StoreGuitar? joinEntity = _db.StoreGuitars.FirstOrDefault(join => (join.StoreGuitarId == storeId && join.GuitarId == guitar.GuitarId));
+      #nullable disable
       if (joinEntity == null && storeId != 0)
       {
         _db.StoreGuitars.Add(new StoreGuitar() { StoreId = storeId, GuitarId = guitar.GuitarId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = guitar.GuitarId });
+    }
+
+    // public ActionResult Delete(int id)
+    // {
+    //   Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
+    //   return View(thisGuitar);
+    // }
+
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      StoreGuitar joinEntry = _db.StoreGuitars.FirstOrDefault(entry => entry.StoreGuitarId == joinId);
+      _db.StoreGuitars.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
   }

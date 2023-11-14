@@ -77,5 +77,14 @@ namespace GuitarVendor.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      StoreGuitar joinEntry = _db.StoreGuitars.FirstOrDefault(entry => entry.StoreGuitarId == joinId);
+      _db.StoreGuitars.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }
