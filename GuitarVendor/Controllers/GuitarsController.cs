@@ -90,11 +90,20 @@ namespace GuitarVendor.Controllers
       return RedirectToAction("Index");
     }
 
-    // public ActionResult Delete(int id)
-    // {
-    //   Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
-    //   return View(thisGuitar);
-    // }
+    public ActionResult Delete(int id)
+    {
+      Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
+      return View(thisGuitar);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
+      _db.Guitars.Remove(thisGuitar);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
