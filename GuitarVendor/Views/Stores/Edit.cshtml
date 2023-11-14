@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@model GuitarVendor.Models.Store
+
+<h2>Edit</h2>
+
+<h4>Edit this store: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.StoreId)
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+  <br>
+  @Html.LabelFor(model => model.Description)
+  @Html.EditorFor(model => model.Description)
+  <br>
+  <input type="submit" class="btn btn-primary" value="Edit"/>
+}
+<br>
+<p>@Html.ActionLink("Back to store list", "Index")</p>

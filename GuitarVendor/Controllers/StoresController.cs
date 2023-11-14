@@ -47,5 +47,20 @@ namespace GuitarVendor.Controllers
       .FirstOrDefault(store => store.StoreId == id);
       return View(thisStore);
     }
+
+    public ActionResult Edit(int id)
+    {
+      Store thisStore = _db.Stores.FirstOrDefault(store => store.StoreId == id);
+      return View(thisStore);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Store store)
+    {
+      _db.Stores.Update(store);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }
