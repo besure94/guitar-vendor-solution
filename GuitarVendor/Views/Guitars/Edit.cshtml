@@ -1,0 +1,45 @@
+@{
+  Layout = "_Layout";
+}
+
+@model GuitarVendor.Models.Guitar
+
+<h2>Edit</h2>
+
+<h4>Edit this guitar: @Html.DisplayFor(model => model.Year) @Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.Model)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.GuitarId)
+  @Html.LabelFor(model => model.Brand)
+  @Html.TextBoxFor(model => model.Brand)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Model)
+  @Html.TextBoxFor(model => model.Model)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Color)
+  @Html.TextBoxFor(model => model.Color)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Type)
+  @Html.TextBoxFor(model => model.Type)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Price)
+  @Html.TextBoxFor(model => model.Price, new {type="number", min="0"})
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Year)
+  @Html.TextBoxFor(model => model.Year, new {type="number", min="1931", max="2023"})
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Store)
+  @Html.DropDownList("StoreId")
+  <br>
+  <br>
+  <input type="submit" value="Edit" class="btn btn-primary"/>
+}
+<br>
+<p>@Html.ActionLink("View guitar list", "Index")</p>

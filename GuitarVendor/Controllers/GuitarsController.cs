@@ -75,6 +75,21 @@ namespace GuitarVendor.Controllers
       return RedirectToAction("Details", new { id = guitar.GuitarId });
     }
 
+    public ActionResult Edit(int id)
+    {
+      Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
+      ViewBag.StoreId = new SelectList(_db.Stores, "StoreId", "Name");
+      return View(thisGuitar);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Guitar guitar)
+    {
+      _db.Guitars.Update(guitar);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
     // public ActionResult Delete(int id)
     // {
     //   Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
