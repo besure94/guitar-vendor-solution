@@ -30,6 +30,10 @@ namespace GuitarVendor.Controllers
     [HttpPost]
     public ActionResult Create(Store store)
     {
+      if (store.Name == null || store.Description == null)
+      {
+        return RedirectToAction("Create");
+      }
       _db.Stores.Add(store);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -37,7 +41,10 @@ namespace GuitarVendor.Controllers
 
     public ActionResult Details(int id)
     {
-      Store thisStore = _db.Stores.Include(store => store.Guitars).FirstOrDefault(store => store.StoreId == id);
+      Store thisStore = _db.Stores
+      .Include(guitar => guitar.JoinEntities)
+      .ThenInclude(store => store.Guitar)
+      .FirstOrDefault(store => store.StoreId == id);
       return View(thisStore);
     }
   }

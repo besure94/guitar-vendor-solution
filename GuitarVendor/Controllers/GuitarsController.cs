@@ -39,6 +39,8 @@ namespace GuitarVendor.Controllers
       {
         _db.Guitars.Add(guitar);
         _db.SaveChanges();
+        _db.StoreGuitars.Add(new StoreGuitar() { StoreId = guitar.StoreId, GuitarId = guitar.GuitarId });
+        _db.SaveChanges();
         return RedirectToAction("Index");
       }
     }
