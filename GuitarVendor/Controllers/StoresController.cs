@@ -62,5 +62,20 @@ namespace GuitarVendor.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult Delete(int id)
+    {
+      Store thisStore = _db.Stores.FirstOrDefault(store => store.StoreId == id);
+      return View(thisStore);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Store thisStore = _db.Stores.FirstOrDefault(stores => stores.StoreId == id);
+      _db.Stores.Remove(thisStore);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }
