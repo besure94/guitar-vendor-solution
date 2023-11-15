@@ -12,7 +12,7 @@
 <p>@Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p><p>@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
-<p>@Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Year, null, new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 @using (Html.BeginForm())
 {
@@ -33,11 +33,13 @@
   <br>
   <br>
   @Html.LabelFor(model => model.Price)
-  @Html.TextBoxFor(model => model.Price, new {type="number", min="0"})
+  @* @Html.TextBoxFor(model => model.Price) *@
+  @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @type="number", @min="0", @defaultValue="0"}})
   <br>
   <br>
   @Html.LabelFor(model => model.Year)
-  @Html.TextBoxFor(model => model.Year, new {type="number", min="1931", max="2023"})
+  @* @Html.TextBoxFor(model => model.Year) *@
+  @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @type="number", @min="1931", @max="2023", @defaultValue="0"}})
   <br>
   <br>
   @Html.LabelFor(model => model.Store)

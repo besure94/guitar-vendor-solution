@@ -23,10 +23,12 @@ namespace GuitarVendor.Models
     [Required(ErrorMessage = "The guitar's type can't be empty!")]
     public string Type { get; set; }
 
-    [Required(ErrorMessage = "The guitar's price can't be empty!")]
+    // [Required(ErrorMessage = "The guitar's price can't be empty!")]
+    // [Required]
+    [Range(1, 50000000, ErrorMessage = "The guitar's price can't be empty!")]
     public int Price { get; set; }
 
-    [Required(ErrorMessage = "The guitar's year can't be empty!")]
+    [Range(1931, 2023)]
     public int Year { get; set; }
     public Store Store { get; set; }
     public List<StoreGuitar> JoinEntities { get; }
