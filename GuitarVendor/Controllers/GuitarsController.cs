@@ -31,9 +31,10 @@ namespace GuitarVendor.Controllers
     [HttpPost]
     public ActionResult Create(Guitar guitar)
     {
-      if (guitar.StoreId == 0 || guitar.Brand == null || guitar.Model == null || guitar.Color == null || guitar.Type == null || guitar.Price == 0)
+      if (!ModelState.IsValid)
       {
-        return RedirectToAction ("Create");
+        ViewBag.StoreId = new SelectList(_db.Stores, "StoreId", "Name");
+        return View(guitar);
       }
       else
       {

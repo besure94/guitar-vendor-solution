@@ -5,10 +5,13 @@
 @model GuitarVendor.Models.Guitar
 @using GuitarVendor.Models
 
-<p><strong>Note:</strong>You need to have at least one store before you can add a guitar.</p>
-<p>Go to @Html.ActionLink("this page", "Create", "Stores") to add a store.</p>
-
 <h4>Add a new guitar</h4>
+<p>@Html.ValidationMessageFor(model => model.StoreId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p><p>@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Brand)
