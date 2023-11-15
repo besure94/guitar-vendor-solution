@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GuitarVendor.Controllers
 {
@@ -30,9 +31,9 @@ namespace GuitarVendor.Controllers
     [HttpPost]
     public ActionResult Create(Store store)
     {
-      if (store.Name == null || store.Description == null)
+      if (!ModelState.IsValid)
       {
-        return RedirectToAction("Create");
+        return View(store);
       }
       _db.Stores.Add(store);
       _db.SaveChanges();
