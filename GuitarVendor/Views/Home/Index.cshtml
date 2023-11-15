@@ -10,5 +10,31 @@
 
 <hr>
 
-<p>@Html.ActionLink("View all guitars", "Index", "Guitars")</p>
-<p>@Html.ActionLink("View all stores", "Index", "Stores")</p>
+<h4>Stores</h4>
+@if (Model["stores"].Length == 0)
+{
+  <p>No stores have been added yet.</p>
+}
+<ul>
+  @foreach (Store stores in Model["stores"])
+  {
+    <li>@Html.ActionLink(@stores.Name, "Details", "Stores", new { id = @stores.StoreId })</li>
+  }
+</ul>
+
+<h4>Guitars</h4>
+@if (Model["guitars"].Length == 0)
+{
+  <p>No guitars have been added yet.</p>
+}
+<ul>
+  @foreach (Guitar guitars in Model["guitars"])
+  {
+    <li>@Html.ActionLink($"{@guitars.Year}_{@guitars.Brand}_{@guitars.Model}", "Details", "Guitars", new { id = @guitars.GuitarId })</li>
+  }
+</ul>
+
+<hr>
+
+<p>@Html.ActionLink("Manage guitars", "Index", "Guitars")</p>
+<p>@Html.ActionLink("Manage stores", "Index", "Stores")</p>

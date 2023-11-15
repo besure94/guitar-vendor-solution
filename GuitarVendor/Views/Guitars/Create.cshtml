@@ -6,12 +6,14 @@
 @using GuitarVendor.Models
 
 <h4>Add a new guitar</h4>
+
 <p>@Html.ValidationMessageFor(model => model.StoreId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p><p>@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Brand)
