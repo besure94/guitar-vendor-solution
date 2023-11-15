@@ -78,7 +78,6 @@ namespace GuitarVendor.Controllers
     public ActionResult Edit(int id)
     {
       Guitar thisGuitar = _db.Guitars.FirstOrDefault(guitar => guitar.GuitarId == id);
-      ViewBag.StoreId = new SelectList(_db.Stores, "StoreId", "Name");
       return View(thisGuitar);
     }
 

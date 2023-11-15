@@ -11,6 +11,7 @@
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.GuitarId)
+  @Html.HiddenFor(model => model.StoreId)
   @Html.LabelFor(model => model.Brand)
   @Html.TextBoxFor(model => model.Brand)
   <br>
@@ -33,10 +34,6 @@
   <br>
   @Html.LabelFor(model => model.Year)
   @Html.TextBoxFor(model => model.Year, new {type="number", min="1931", max="2023"})
-  <br>
-  <br>
-  @Html.LabelFor(model => model.Store)
-  @Html.DropDownList("StoreId")
   <br>
   <br>
   <input type="submit" value="Edit" class="btn btn-primary"/>
