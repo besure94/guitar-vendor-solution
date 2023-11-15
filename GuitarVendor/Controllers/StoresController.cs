@@ -86,5 +86,26 @@ namespace GuitarVendor.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult AddGuitar(int id)
+    {
+      Store thisStore = _db.Stores.FirstOrDefault(stores => stores.StoreId == id);
+      ViewBag.GuitarId = new SelectList(_db.Guitars, "GuitarId", "Year", "Brand", "Model");
+      return View(thisStore);
+    }
+
+    [HttpPost]
+    public ActionResult AddGuitar(Store store, int guitarId)
+    {
+      #nullable enable
+      StoreGuitar? joinEntity = _db.StoreGuitars.FirstOrDefault(join => join.StoreGuitarId == guitarId && join.StoreId == store.StoreId );
+      #nullable disable
+      if (joinEntity == null && guitarId != 0)
+      {
+        _db.StoreGuitars.Add(new StoreGuitar() { GuitarId = guitarId, StoreId = store.StoreId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = store.StoreId });
+    }
+
   }
 }
