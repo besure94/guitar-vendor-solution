@@ -26,10 +26,10 @@ namespace GuitarVendor.Models
     // [Required(ErrorMessage = "The guitar's price can't be empty!")]
     // [Required]
     [Range(1, 50000000, ErrorMessage = "The guitar's price can't be empty!")]
-    public int Price { get; set; }
+    public int? Price { get; set; }
 
     [Range(1931, 2023)]
-    public int Year { get; set; }
+    public int? Year { get; set; }
     public Store Store { get; set; }
     public List<StoreGuitar> JoinEntities { get; }
 

@@ -42,7 +42,7 @@ Install the tools that are introduced in [this series of lessons on LearnHowToPr
 }
 ```
 
-5. Create the database using the migrations in the Doctors Office project. Open your terminal to the production directory called `GuitarVendor`, and run `dotnet ef database update`.
+5. Create the database using the migrations in the Guitar Vendor project. Open your terminal to the production directory called `GuitarVendor`, and run `dotnet ef database update`.
     * If you need to create your own migration, run the command `dotnet ef migrations add MigrationName`, where `MigrationName` is your custom name for the migration in UpperCamelCase format.
 
 6. Within the production directory called `GuitarVendor`, run `dotnet watch run` in the command line to start the project in development mode with a watcher.
