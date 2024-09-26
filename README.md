@@ -57,3 +57,10 @@ When validating properties for models that are integers, the default message tha
 MIT
 
 Copyright(c) 2023 Brian Scherner
+
+## Expanding Functionality Ideas
+
+* Add identity and authorization with user roles to project.
+* Implement two roles, customer and vendor.
+* Customer should only have read functionality, and the ability to purchase a guitar (which will be added at a later point)
+* Vendor should have full CRUD functionality
